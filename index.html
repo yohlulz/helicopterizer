@@ -19,7 +19,15 @@
     </section>
 
     <section class="main-content">
-      <p><a href="https://imagelayers.io/?images=frekele/helicopterizer:latest"><img src="https://badge.imagelayers.io/frekele/helicopterizer:latest.svg" alt="ImageLayers"></a>
+      <h1>
+<a id="helicopterizer" class="anchor" href="#helicopterizer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Helicopterizer</h1>
+
+<h4>
+<a id="solution-in-backup-and-restore-for-docker-container-in-the-cloud-providers" class="anchor" href="#solution-in-backup-and-restore-for-docker-container-in-the-cloud-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Solution in Backup and Restore for Docker Container in the Cloud Providers!</h4>
+
+<p><a href="https://github.com/frekele/helicopterizer/"><img src="https://raw.githubusercontent.com/frekele/helicopterizer/master/docs/static_files/logo.png" alt="Helicopterizer Image"></a> </p>
+
+<p><a href="https://imagelayers.io/?images=frekele/helicopterizer:latest"><img src="https://badge.imagelayers.io/frekele/helicopterizer:latest.svg" alt="ImageLayers"></a>
 <a href="https://gitter.im/frekele/helicopterizer?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/frekele/helicopterizer.svg" alt="Gitter"></a></p>
 
 <p><a href="https://hub.docker.com/r/frekele/helicopterizer/"><img src="https://img.shields.io/docker/pulls/frekele/helicopterizer.svg" alt="Docker Pulls"></a>
@@ -35,16 +43,11 @@
 <a href="https://github.com/frekele/helicopterizer/stargazers"><img src="https://img.shields.io/github/stars/frekele/helicopterizer.svg" alt="GitHub stars"></a>
 <a href="https://raw.githubusercontent.com/frekele/helicopterizer/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a></p>
 
-<h1>
-<a id="helicopterizer" class="anchor" href="#helicopterizer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Helicopterizer</h1>
-
-<p><a href="https://github.com/frekele/helicopterizer/"><img src="https://raw.githubusercontent.com/frekele/helicopterizer/master/docs/static_files/logo.png" alt="Helicopterizer Image"></a> </p>
-
 <h2>
 <a id="backup-and-restore-for-docker-container" class="anchor" href="#backup-and-restore-for-docker-container" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Backup and Restore for Docker Container</h2>
 
 <h4>
-<a id="solution-in-backup-and-restore-for-docker-container-in-the-cloud-providers" class="anchor" href="#solution-in-backup-and-restore-for-docker-container-in-the-cloud-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Solution in Backup and Restore for Docker Container in the Cloud Providers!</h4>
+<a id="solution-in-backup-and-restore-for-docker-container-in-the-cloud-providers-1" class="anchor" href="#solution-in-backup-and-restore-for-docker-container-in-the-cloud-providers-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Solution in Backup and Restore for Docker Container in the Cloud Providers!</h4>
 
 <h3>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage:</h3>
@@ -326,19 +329,12 @@ docker run --rm \
 helicopterizer [backup|restore]
 </code></pre>
 
-<p>Run [Backup|Restore] with other AWS Region:</p>
+<p>Run [Backup|Restore] with data volume container:</p>
 
 <pre><code>docker run --rm \
 ........
--e AWS_DEFAULT_REGION=sa-east-1 \
-helicopterizer [backup|restore]
-</code></pre>
-
-<p>Run [Backup|Restore] with subdirectories in AWS S3:</p>
-
-<pre><code>docker run --rm \
-........
--e AWS_S3_PATH=/project-alpha/nexus/ \
+-e DATA_PATH=/var/jenkins_home/ \
+--volumes-from jenkins-data \
 helicopterizer [backup|restore]
 </code></pre>
 
@@ -377,12 +373,19 @@ helicopterizer restore
 helicopterizer [backup|restore]
 </code></pre>
 
-<p>Run [Backup|Restore] with data volume container:</p>
+<p>Run [Backup|Restore] with other AWS Region:</p>
 
 <pre><code>docker run --rm \
 ........
--e DATA_PATH=/var/jenkins_home/ \
---volumes-from jenkins-data \
+-e AWS_DEFAULT_REGION=sa-east-1 \
+helicopterizer [backup|restore]
+</code></pre>
+
+<p>Run [Backup|Restore] with subdirectories in AWS S3:</p>
+
+<pre><code>docker run --rm \
+........
+-e AWS_S3_PATH=/project-alpha/nexus/ \
 helicopterizer [backup|restore]
 </code></pre>
 
