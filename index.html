@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Helicopterizer by frekele</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Helicopterizer</h1>
+      <h2 class="project-tagline">Solution in Backup and Restore for Docker Container in the Cloud Providers!</h2>
+      <a href="https://github.com/frekele/helicopterizer" class="btn">View on GitHub</a>
+      <a href="https://github.com/frekele/helicopterizer/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/frekele/helicopterizer/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><a href="https://imagelayers.io/?images=frekele/helicopterizer:latest"><img src="https://badge.imagelayers.io/frekele/helicopterizer:latest.svg" alt="ImageLayers"></a>
+<a href="https://gitter.im/frekele/helicopterizer?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/frekele/helicopterizer.svg" alt="Gitter"></a></p>
+
+<p><a href="https://hub.docker.com/r/frekele/helicopterizer/"><img src="https://img.shields.io/docker/pulls/frekele/helicopterizer.svg" alt="Docker Pulls"></a>
+<a href="https://hub.docker.com/r/frekele/helicopterizer/"><img src="https://img.shields.io/imagelayers/image-size/frekele/helicopterizer/latest.svg" alt="ImageLayers Size"></a>
+<a href="https://hub.docker.com/r/frekele/helicopterizer/"><img src="https://img.shields.io/imagelayers/layers/frekele/helicopterizer/latest.svg" alt="ImageLayers Layers"></a>
+<a href="https://hub.docker.com/r/frekele/helicopterizer/"><img src="https://img.shields.io/docker/stars/frekele/helicopterizer.svg" alt="Docker Stars"></a>
+<a href="https://github.com/docker/docker/releases/latest"><img src="https://img.shields.io/github/release/frekele/helicopterizer.svg" alt="Release"></a></p>
+
+<p><a href="https://circleci.com/gh/frekele/helicopterizer/tree/master"><img src="https://circleci.com/gh/frekele/helicopterizer/tree/master.svg?style=shield" alt="Circle CI"></a>
+<a href="https://travis-ci.org/frekele/helicopterizer"><img src="https://travis-ci.org/frekele/helicopterizer.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.com/frekele/helicopterizer/issues"><img src="https://img.shields.io/github/issues/frekele/helicopterizer.svg" alt="GitHub issues"></a>
+<a href="https://github.com/frekele/helicopterizer/network"><img src="https://img.shields.io/github/forks/frekele/helicopterizer.svg" alt="GitHub forks"></a> 
+<a href="https://github.com/frekele/helicopterizer/stargazers"><img src="https://img.shields.io/github/stars/frekele/helicopterizer.svg" alt="GitHub stars"></a>
+<a href="https://raw.githubusercontent.com/frekele/helicopterizer/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a></p>
+
+<h1>
+<a id="helicopterizer" class="anchor" href="#helicopterizer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Helicopterizer</h1>
+
+<p><a href="https://github.com/frekele/helicopterizer/"><img src="https://raw.githubusercontent.com/frekele/helicopterizer/master/docs/static_files/logo.png" alt="Helicopterizer Image"></a> </p>
+
+<h2>
+<a id="backup-and-restore-for-docker-container" class="anchor" href="#backup-and-restore-for-docker-container" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Backup and Restore for Docker Container</h2>
+
+<h4>
+<a id="solution-in-backup-and-restore-for-docker-container-in-the-cloud-providers" class="anchor" href="#solution-in-backup-and-restore-for-docker-container-in-the-cloud-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Solution in Backup and Restore for Docker Container in the Cloud Providers!</h4>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage:</h3>
+
+<pre><code>  docker run -d [Environment Variables] [-v|--volumes-from] frekele/helicopterizer [backup|restore]
+</code></pre>
+
+<h4>
+<a id="cloud-storage-provider-supported" class="anchor" href="#cloud-storage-provider-supported" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cloud Storage Provider Supported:</h4>
+
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Variable Value</th>
+<th>Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon Simple Storage Service (S3)</td>
+<td>AWS</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Microsoft Azure Storage</td>
+<td>AZURE</td>
+<td>no - Planned for the future</td>
+</tr>
+<tr>
+<td>Google Cloud Storage</td>
+<td>GOOGLE</td>
+<td>no - Planned for the future</td>
+</tr>
+<tr>
+<td>Rackspace Storage</td>
+<td>RACKSPACE</td>
+<td>no - Planned for the future</td>
+</tr>
+<tr>
+<td>IBM SoftLayer Storage</td>
+<td>SOFTLAYER</td>
+<td>no - Planned for the future</td>
+</tr>
+<tr>
+<td>OpenStack Swift Storage (Open source)</td>
+<td>OPENSTACK</td>
+<td>no - Planned for the future</td>
+</tr>
+<tr>
+<td>Minio Storage (Open source)</td>
+<td>MINIO</td>
+<td>no - Planned for the future</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="environment-variables" class="anchor" href="#environment-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment Variables:</h4>
+
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Default</th>
+<th>Action</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STORAGE_PROVIDER</td>
+<td>null</td>
+<td>backup,restore</td>
+<td>yes</td>
+<td>Provider name (AWS, AZURE, GOOGLE, RACKSPACE, SOFTLAYER)</td>
+</tr>
+<tr>
+<td>BACKUP_NAME</td>
+<td>null</td>
+<td>backup,restore</td>
+<td>no</td>
+<td>Backup name using: $(BACKUP_NAME)-$(BACKUP_VERSION).tar.gz</td>
+</tr>
+<tr>
+<td>DATA_PATH</td>
+<td>/data/</td>
+<td>backup,restore</td>
+<td>no</td>
+<td>Data path : /data/(your files)</td>
+</tr>
+<tr>
+<td>GZIP_COMPRESSION</td>
+<td>true</td>
+<td>backup,restore</td>
+<td>no</td>
+<td>Boolean to indicate the compression of the file .tar to .tar.gz</td>
+</tr>
+<tr>
+<td>CLEAN_DATA_BEFORE_RESTORE</td>
+<td>false</td>
+<td>restore</td>
+<td>no</td>
+<td>Boolean to indicate the compression of the file .tar to .tar.gz</td>
+</tr>
+<tr>
+<td>BACKUP_VERSION</td>
+<td>null</td>
+<td>restore</td>
+<td>yes</td>
+<td>Backup version using: $(BACKUP_VERSION).tar.gz</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="environment-variables-for-aws-s3" class="anchor" href="#environment-variables-for-aws-s3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment Variables for AWS S3:</h4>
+
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Default</th>
+<th>Action</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWS_ACCESS_KEY_ID</td>
+<td>null</td>
+<td>backup,restore</td>
+<td>yes</td>
+<td>AWS access key. Eg: AKRJPMI3QYCARJCRF4VF</td>
+</tr>
+<tr>
+<td>AWS_SECRET_ACCESS_KEY</td>
+<td>null</td>
+<td>backup,restore</td>
+<td>yes</td>
+<td>AWS secret key. Eg: VCsrO7aVulGuiUdXbS31jtQA4iRTVgi4scftJAJr</td>
+</tr>
+<tr>
+<td>AWS_S3_BUCKET_NAME</td>
+<td>null</td>
+<td>backup,restore</td>
+<td>yes</td>
+<td>S3 bucket name. Eg: s3://my-bucket-backup/</td>
+</tr>
+<tr>
+<td>AWS_S3_PATH</td>
+<td>/</td>
+<td>backup,restore</td>
+<td>no</td>
+<td>Relative path for bucket S3. Eg: (AWS_S3_BUCKET_NAME)/jenkins/</td>
+</tr>
+<tr>
+<td>AWS_DEFAULT_REGION</td>
+<td>us-east-1</td>
+<td>backup,restore</td>
+<td>no</td>
+<td>Default region bucket. Eg: (sa-east-1)</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="aws-s3-regions" class="anchor" href="#aws-s3-regions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AWS S3 Regions:</h4>
+
+<table>
+<thead>
+<tr>
+<th>Region Name</th>
+<th>Description the Region</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>us-east-1</td>
+<td>US East (Virginia)</td>
+</tr>
+<tr>
+<td>us-west-1</td>
+<td>US West (N. California)</td>
+</tr>
+<tr>
+<td>us-west-2</td>
+<td>US West (Oregon)</td>
+</tr>
+<tr>
+<td>eu-west-1</td>
+<td>EU West (Ireland)</td>
+</tr>
+<tr>
+<td>eu-central-1</td>
+<td>EU Central (Frankfurt)</td>
+</tr>
+<tr>
+<td>ap-northeast-1</td>
+<td>Asia Pacific (Tokyo)</td>
+</tr>
+<tr>
+<td>ap-northeast-2</td>
+<td>Asia Pacific (Seoul)</td>
+</tr>
+<tr>
+<td>ap-southeast-1</td>
+<td>Asia Pacific (Singapore)</td>
+</tr>
+<tr>
+<td>ap-southeast-2</td>
+<td>Asia Pacific (Sydney)</td>
+</tr>
+<tr>
+<td>sa-east-1</td>
+<td>South America (Sao Paulo)</td>
+</tr>
+<tr>
+<td>us-gov-west-1</td>
+<td>US GovCloud West (Oregon)</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage Examples:</h3>
+
+<p>Run Backup:</p>
+
+<pre><code>docker run --rm \
+-e STORAGE_PROVIDER=AWS \
+-e AWS_ACCESS_KEY_ID=XXXXXXXXXXXXX \
+-e AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
+-e AWS_S3_BUCKET_NAME=s3://my-bucket-backup/ \
+-v /home/jenkins-data:/data:ro \
+helicopterizer backup
+</code></pre>
+
+<p><em>Use ':ro' to mount the volumes in read-only mode.</em></p>
+
+<p>Run Restore:</p>
+
+<pre><code>docker run --rm \
+-e STORAGE_PROVIDER=AWS \
+-e AWS_ACCESS_KEY_ID=XXXXXXXXXXXXX \
+-e AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
+-e AWS_S3_BUCKET_NAME=s3://my-bucket-backup/ \
+-e BACKUP_VERSION=2016-04-17T00:34:20Z \
+-v /home/jenkins-data:/data:rw \
+helicopterizer restore
+</code></pre>
+
+<p><em>Use ':rw' to mount the volumes in read-write mode.</em></p>
+
+<p>Run [Backup|Restore] with environment file:</p>
+
+<pre><code>touch ~/helicopterizer.conf
+##################################
+# Set Your Environment Variables:
+##################################
+STORAGE_PROVIDER=AWS
+BACKUP_NAME=my-backup-name
+DATA_PATH=/data/
+GZIP_COMPRESSION=true
+CLEAN_DATA_BEFORE_RESTORE=false
+BACKUP_VERSION=date-time-z
+AWS_ACCESS_KEY_ID=XXXXXXXXXXXXX
+AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+AWS_S3_BUCKET_NAME=s3://my-bucket-backup/
+AWS_S3_PATH=/
+AWS_DEFAULT_REGION=us-east-1
+##################################
+.
+docker run --rm \
+--env-file ~/helicopterizer.conf \
+-v /home/jenkins-data:/data \
+helicopterizer [backup|restore]
+</code></pre>
+
+<p>Run [Backup|Restore] with other AWS Region:</p>
+
+<pre><code>docker run --rm \
+........
+-e AWS_DEFAULT_REGION=sa-east-1 \
+helicopterizer [backup|restore]
+</code></pre>
+
+<p>Run [Backup|Restore] with subdirectories in AWS S3:</p>
+
+<pre><code>docker run --rm \
+........
+-e AWS_S3_PATH=/project-alpha/nexus/ \
+helicopterizer [backup|restore]
+</code></pre>
+
+<p>Run [Backup|Restore] with prefix name <em>$(BACKUP_NAME)-$(BACKUP_VERSION).tar.gz</em>:</p>
+
+<pre><code>docker run --rm \
+........
+-e BACKUP_NAME=my-backup-name \
+helicopterizer [backup|restore]
+</code></pre>
+
+<p>Run [Backup|Restore] without gzip compression:</p>
+
+<pre><code>docker run --rm \
+........
+-e GZIP_COMPRESSION=false \
+helicopterizer [backup|restore]
+</code></pre>
+
+<p>Run With clean the date before the restore:</p>
+
+<p><strong><em>[Be careful here, you will lose all your data inside DATA_PATH directory].</em></strong></p>
+
+<pre><code>docker run --rm \
+........
+-e CLEAN_DATA_BEFORE_RESTORE=true \
+helicopterizer restore
+</code></pre>
+
+<p>Run [Backup|Restore] with other data path:</p>
+
+<pre><code>docker run --rm \
+........
+-e DATA_PATH=/other-data-directory/ \
+-v /home/jenkins-data:/jenkins-data \
+helicopterizer [backup|restore]
+</code></pre>
+
+<p>Run [Backup|Restore] with data volume container:</p>
+
+<pre><code>docker run --rm \
+........
+-e DATA_PATH=/var/jenkins_home/ \
+--volumes-from jenkins-data \
+helicopterizer [backup|restore]
+</code></pre>
+
+<h3>
+<a id="working-with-persistent-data" class="anchor" href="#working-with-persistent-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Working with Persistent Data:</h3>
+
+<p>There are two general approaches to handling persistent storage requirements with Docker.
+See <a href="https://docs.docker.com/userguide/dockervolumes/">Managing Data in Containers</a> for additional information.</p>
+
+<h4>
+<a id="data-volume-container" class="anchor" href="#data-volume-container" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data volume container</h4>
+
+<p><em>Use a data volume container</em>. Since data volumes are persistent until no containers use them, a container can created specifically for this purpose.  </p>
+
+<p><em>Example with Jenkins:</em> </p>
+
+<pre><code>docker run -d --name jenkins-data jenkinsci/jenkins:2.0 echo "data-only container for Jenkins"
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins --volumes-from jenkins-data jenkinsci/jenkins:2.0
+</code></pre>
+
+<p><em>Example with Nexus:</em>    </p>
+
+<pre><code>docker run -d --name nexus-data sonatype/nexus3 echo "data-only container for Nexus"
+docker run -d -p 8081:8081 --name nexus --volumes-from nexus-data sonatype/nexus3
+</code></pre>
+
+<h4>
+<a id="data-volume" class="anchor" href="#data-volume" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data volume</h4>
+
+<p><em>Mount a host directory as the volume</em>.  This is not portable, as it relies on the directory existing with correct permissions on the host.
+However it can be useful in certain situations where this volume needs to be assigned to certain specific underlying storage.  </p>
+
+<p><em>Example with Jenkins:</em></p>
+
+<pre><code>mkdir /home/jenkins-data
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v /home/jenkins-data:/jenkins-data jenkinsci/jenkins:2.0
+</code></pre>
+
+<p><em>Example with Nexus:</em></p>
+
+<pre><code>mkdir /home/nexus-data &amp;&amp; chown -R 200 /home/nexus-data
+docker run -d -p 8081:8081 --name nexus -v /home/nexus-data:/nexus-data sonatype/nexus3
+</code></pre>
+
+<h3>
+<a id="building" class="anchor" href="#building" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building:</h3>
+
+<p>Build with the usual</p>
+
+<pre><code>docker build -t helicopterizer .
+</code></pre>
+
+<p>Tests are written using <a href="https://github.com/sstephenson/bats">bats</a> under the <code>tests</code> dir</p>
+
+<pre><code>bats tests
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/frekele/helicopterizer">Helicopterizer</a> is maintained by <a href="https://github.com/frekele">frekele</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
