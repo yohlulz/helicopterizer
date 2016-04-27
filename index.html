@@ -118,6 +118,7 @@
 <th>Default</th>
 <th>Action</th>
 <th>Required</th>
+<th>Option</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -125,29 +126,41 @@
 <tr>
 <td>STORAGE_PROVIDER</td>
 <td>null</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>yes</td>
-<td>Provider name (AWS, AZURE, GOOGLE, RACKSPACE, SOFTLAYER)</td>
-</tr>
-<tr>
-<td>BACKUP_NAME</td>
-<td>null</td>
-<td>backup,restore</td>
-<td>no</td>
-<td>Backup name using: $(BACKUP_NAME)-$(BACKUP_VERSION).tar.gz</td>
+<td>tarball, sync</td>
+<td>Provider name (AWS, AZURE, GOOGLE ...)</td>
 </tr>
 <tr>
 <td>DATA_PATH</td>
 <td>/data/</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>no</td>
+<td>tarball, sync</td>
 <td>Data path : /data/(your files)</td>
+</tr>
+<tr>
+<td>CRON_SCHEDULE</td>
+<td>null</td>
+<td>backup, restore</td>
+<td>no</td>
+<td>tarball, sync</td>
+<td>Cron Job Scheduler, Eg: '*/15 * * * *' run every 15 minutes</td>
+</tr>
+<tr>
+<td>BACKUP_NAME</td>
+<td>null</td>
+<td>backup, restore</td>
+<td>no</td>
+<td>tarball</td>
+<td>Backup name using: $(BACKUP_NAME)-$(BACKUP_VERSION).tar.gz</td>
 </tr>
 <tr>
 <td>GZIP_COMPRESSION</td>
 <td>true</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>no</td>
+<td>tarball</td>
 <td>Boolean to indicate the compression of the file .tar to .tar.gz</td>
 </tr>
 <tr>
@@ -155,6 +168,7 @@
 <td>false</td>
 <td>restore</td>
 <td>no</td>
+<td>tarball, sync</td>
 <td>Boolean to indicate the compression of the file .tar to .tar.gz</td>
 </tr>
 <tr>
@@ -162,14 +176,8 @@
 <td>null</td>
 <td>restore</td>
 <td>yes</td>
+<td>tarball</td>
 <td>Backup version using: $(BACKUP_VERSION).tar.gz</td>
-</tr>
-<tr>
-<td>CRON_SCHEDULE</td>
-<td>null</td>
-<td>backup,restore</td>
-<td>no</td>
-<td>Cron Job Scheduler, Eg: '*/15 * * * *' run every 15 minutes</td>
 </tr>
 </tbody>
 </table>
@@ -184,6 +192,7 @@
 <th>Default</th>
 <th>Action</th>
 <th>Required</th>
+<th>Option</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -191,44 +200,50 @@
 <tr>
 <td>AWS_ACCESS_KEY_ID</td>
 <td>null</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>yes</td>
+<td>tarball, sync</td>
 <td>AWS access key. Eg: AKRJPMI3QYCARJCRF4VF</td>
 </tr>
 <tr>
 <td>AWS_SECRET_ACCESS_KEY</td>
 <td>null</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>yes</td>
+<td>tarball, sync</td>
 <td>AWS secret key. Eg: VCsrO7aVulGuiUdXbS31jtQA4iRTVgi4scftJAJr</td>
 </tr>
 <tr>
 <td>AWS_S3_BUCKET_NAME</td>
 <td>null</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>yes</td>
+<td>tarball, sync</td>
 <td>S3 bucket name. Eg: s3://my-bucket-backup/</td>
 </tr>
 <tr>
 <td>AWS_S3_PATH</td>
 <td>/</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>no</td>
+<td>tarball, sync</td>
 <td>Relative path for bucket S3. Eg: (AWS_S3_BUCKET_NAME)/jenkins/</td>
 </tr>
 <tr>
 <td>AWS_DEFAULT_REGION</td>
 <td>us-east-1</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>no</td>
+<td>tarball, sync</td>
 <td>Default region bucket. Eg: (sa-east-1)</td>
 </tr>
 <tr>
 <td>AWS_S3_OPTIONS</td>
 <td>null</td>
-<td>backup,restore</td>
+<td>backup, restore</td>
 <td>no</td>
-<td>AWS S3 options parameters. See in <a href="http://docs.aws.amazon.com/cli/latest/reference/s3/">AWS CLI S3</a>
+<td>tarball, sync</td>
+<td>AWS S3 options parameters. See in <a href="http://docs.aws.amazon.com/cli/latest/reference/s3/sync.html">AWS CLI S3</a>
 </td>
 </tr>
 </tbody>
@@ -362,7 +377,7 @@ AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 AWS_S3_BUCKET_NAME=s3://my-bucket-backup/
 AWS_S3_PATH=/
 AWS_DEFAULT_REGION=us-east-1
-AWS_S3_OPTIONS=--delete
+AWS_S3_OPTIONS=
 ##################################
 .
 docker run --rm \
@@ -456,6 +471,14 @@ helicopterizer [backup|restore] [--tarball|--sync]
 <pre><code>docker run --rm \
 ........
 -e AWS_S3_PATH=/project-alpha/nexus/ \
+helicopterizer [backup|restore] [--tarball|--sync]
+</code></pre>
+
+<p>Run [Backup|Restore] with Options <a href="http://docs.aws.amazon.com/cli/latest/reference/s3/sync.html">AWS CLI S3</a>:</p>
+
+<pre><code>docker run --rm \
+........
+-e AWS_S3_OPTIONS='--delete' \
 helicopterizer [backup|restore] [--tarball|--sync]
 </code></pre>
 
