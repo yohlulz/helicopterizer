@@ -497,13 +497,13 @@ See <a href="https://docs.docker.com/userguide/dockervolumes/">Managing Data in 
 
 <p><em>Example with Jenkins:</em> </p>
 
-<pre><code>docker run -d --name jenkins-data jenkinsci/jenkins:2.0 echo "data-only container for Jenkins"
+<pre><code>docker volume create --name jenkins-data
 docker run -d -p 8080:8080 -p 50000:50000 --name jenkins --volumes-from jenkins-data jenkinsci/jenkins:2.0
 </code></pre>
 
 <p><em>Example with Nexus:</em>    </p>
 
-<pre><code>docker run -d --name nexus-data sonatype/nexus3 echo "data-only container for Nexus"
+<pre><code>docker volume create --name nexus-data
 docker run -d -p 8081:8081 --name nexus --volumes-from nexus-data sonatype/nexus3
 </code></pre>
 
