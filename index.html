@@ -319,7 +319,7 @@
 -e AWS_ACCESS_KEY_ID=XXXXXXXXXXXXX \
 -e AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
 -e AWS_S3_BUCKET_NAME=s3://my-bucket-backup/ \
--v /home/jenkins-data:/data:ro \
+-v /some/dir/jenkins-data:/data:ro \
 helicopterizer backup --tarball
 </code></pre>
 
@@ -330,7 +330,7 @@ helicopterizer backup --tarball
 -e AWS_ACCESS_KEY_ID=XXXXXXXXXXXXX \
 -e AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
 -e AWS_S3_BUCKET_NAME=s3://my-bucket-backup/ \
--v /home/jenkins-data:/data:ro \
+-v /some/dir/jenkins-data:/data:ro \
 helicopterizer backup --sync
 </code></pre>
 
@@ -344,7 +344,7 @@ helicopterizer backup --sync
 -e AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
 -e AWS_S3_BUCKET_NAME=s3://my-bucket-backup/ \
 -e BACKUP_VERSION='2016-05-04T01:34:20Z' \
--v /home/jenkins-data:/data:rw \
+-v /some/dir/jenkins-data:/data:rw \
 helicopterizer restore --tarball
 </code></pre>
 
@@ -356,7 +356,7 @@ helicopterizer restore --tarball
 -e AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
 -e AWS_S3_BUCKET_NAME=s3://my-bucket-backup/ \
 -e BACKUP_VERSION='2016-05-04T01:34:20Z' \
--v /home/jenkins-data:/data:rw \
+-v /some/dir/jenkins-data:/data:rw \
 helicopterizer restore  --sync
 </code></pre>
 
@@ -384,7 +384,7 @@ AWS_S3_OPTIONS=
 .
 docker run --rm \
 --env-file ~/helicopterizer.conf \
--v /home/jenkins-data:/data \
+-v /some/dir/jenkins-data:/data \
 helicopterizer [backup|restore] [--tarball|--sync]
 </code></pre>
 
@@ -455,8 +455,8 @@ helicopterizer restore [--tarball|--sync]
 
 <pre><code>docker run --rm \
 ........
--e DATA_PATH=/other-data-directory/ \
--v /home/jenkins-data:/jenkins-data \
+-e DATA_PATH=/var/jenkins_home/ \
+-v /some/dir/jenkins-data:/var/jenkins_home \
 helicopterizer [backup|restore] [--tarball|--sync]
 </code></pre>
 
@@ -515,8 +515,8 @@ However it can be useful in certain situations where this volume needs to be ass
 
 <p><em>Example with Jenkins:</em></p>
 
-<pre><code>mkdir /home/jenkins-data
-docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v /home/jenkins-data:/var/jenkins_home jenkinsci/jenkins
+<pre><code>mkdir /some/dir/jenkins-data
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v /some/dir/jenkins-data:/var/jenkins_home jenkinsci/jenkins
 
 # or
 
@@ -526,8 +526,8 @@ docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v jenkins-data:/var/je
 
 <p><em>Example with Nexus:</em></p>
 
-<pre><code>mkdir /home/nexus-data &amp;&amp; chown -R 200 /home/nexus-data
-docker run -d -p 8081:8081 --name nexus -v /home/nexus-data:/nexus-data sonatype/nexus3
+<pre><code>mkdir /some/dir/nexus-data &amp;&amp; chown -R 200 /some/dir/nexus-data
+docker run -d -p 8081:8081 --name nexus -v /some/dir/nexus-data:/nexus-data sonatype/nexus3
 
 # or
 
