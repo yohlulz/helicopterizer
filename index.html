@@ -25,7 +25,7 @@
 <h4>
 <a id="solution-open-source-in-backup-and-restore-for-docker-container-in-the-cloud-providers" class="anchor" href="#solution-open-source-in-backup-and-restore-for-docker-container-in-the-cloud-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Solution Open Source in Backup and Restore, for Docker Container in the Cloud Providers!</h4>
 
-<p><a href="https://github.com/frekele/helicopterizer/"><img src="https://raw.githubusercontent.com/frekele/helicopterizer/master/docs/static_files/logo.png" alt="Helicopterizer Image"></a> </p>
+<p><a href="https://github.com/frekele/helicopterizer/"><img src="https://raw.githubusercontent.com/frekele/helicopterizer/master/docs/static_files/logo.png" alt="Helicopterizer Image"></a></p>
 
 <p><a href="https://imagelayers.io/?images=frekele/helicopterizer:latest"><img src="https://badge.imagelayers.io/frekele/helicopterizer:latest.svg" alt="ImageLayers"></a></p>
 
@@ -37,7 +37,7 @@
 <p><a href="https://circleci.com/gh/frekele/helicopterizer/tree/master"><img src="https://circleci.com/gh/frekele/helicopterizer/tree/master.svg?style=shield" alt="Circle CI"></a>
 <a href="https://travis-ci.org/frekele/helicopterizer"><img src="https://travis-ci.org/frekele/helicopterizer.svg?branch=master" alt="Build Status"></a>
 <a href="https://github.com/frekele/helicopterizer/issues"><img src="https://img.shields.io/github/issues/frekele/helicopterizer.svg" alt="GitHub issues"></a>
-<a href="https://github.com/frekele/helicopterizer/network"><img src="https://img.shields.io/github/forks/frekele/helicopterizer.svg" alt="GitHub forks"></a> 
+<a href="https://github.com/frekele/helicopterizer/network"><img src="https://img.shields.io/github/forks/frekele/helicopterizer.svg" alt="GitHub forks"></a>
 <a href="https://github.com/frekele/helicopterizer/stargazers"><img src="https://img.shields.io/github/stars/frekele/helicopterizer.svg" alt="GitHub stars"></a>
 <a href="https://raw.githubusercontent.com/frekele/helicopterizer/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a></p>
 
@@ -170,12 +170,20 @@
 <td>Cron Job Scheduler, Eg: '*/15 * * * *' run every 15 minutes</td>
 </tr>
 <tr>
+<td>BACKUP_PREFIX</td>
+<td>null</td>
+<td>backup, restore</td>
+<td>no</td>
+<td>tarball</td>
+<td>Default name schema: $(BACKUP_PREFIX)$(BACKUP_VERSION).tar.gz</td>
+</tr>
+<tr>
 <td>BACKUP_NAME</td>
 <td>null</td>
 <td>backup, restore</td>
 <td>no</td>
 <td>tarball</td>
-<td>Backup name using: $(BACKUP_NAME)-$(BACKUP_VERSION).tar.gz</td>
+<td>If defined the name shcema is: $(BACKUP_NAME).tar.gz</td>
 </tr>
 <tr>
 <td>GZIP_COMPRESSION</td>
@@ -515,7 +523,7 @@ See <a href="https://docs.docker.com/userguide/dockervolumes/">Managing Data in 
 
 <p><em>Use a data volume container</em>. Since data volumes are persistent until no containers use them, a container can created specifically for this purpose.  </p>
 
-<p><em>Example with Jenkins:</em> </p>
+<p><em>Example with Jenkins:</em></p>
 
 <pre><code>docker run -d --name jenkins-data jenkinsci/jenkins:2.0 echo "data-only container for Jenkins"
 docker run -d -p 8080:8080 -p 50000:50000 --name jenkins --volumes-from jenkins-data jenkinsci/jenkins:2.0
