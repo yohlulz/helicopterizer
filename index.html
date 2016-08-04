@@ -252,6 +252,14 @@
 <td>S3 bucket name. Eg: s3://my-bucket-backup/</td>
 </tr>
 <tr>
+<td>AWS_S3_BUCKET_CREATE</td>
+<td>false</td>
+<td>backup</td>
+<td>no</td>
+<td>tarball, sync</td>
+<td>Boolean to indicate if we create the bucket (if not exists)</td>
+</tr>
+<tr>
 <td>AWS_S3_PATH</td>
 <td>/</td>
 <td>backup, restore</td>
@@ -466,6 +474,14 @@ helicopterizer [backup|restore] --tarball
 <pre><code>docker run --rm \
 ........
 -e GZIP_COMPRESSION=false \
+helicopterizer [backup|restore] --tarball
+</code></pre>
+
+<p>Run [Backup|Restore] with bucket creation (if NoSuchBucket):</p>
+
+<pre><code>docker run --rm \
+........
+-e AWS_S3_BUCKET_CREATE=true \
 helicopterizer [backup|restore] --tarball
 </code></pre>
 
