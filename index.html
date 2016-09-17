@@ -41,8 +41,6 @@
 <a href="https://github.com/frekele/helicopterizer/stargazers"><img src="https://img.shields.io/github/stars/frekele/helicopterizer.svg" alt="GitHub stars"></a>
 <a href="https://raw.githubusercontent.com/frekele/helicopterizer/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a></p>
 
-<p><a href="https://zenhub.io"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a></p>
-
 <h2>
 <a id="backup-and-restore-for-docker-container" class="anchor" href="#backup-and-restore-for-docker-container" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Backup and Restore for Docker Container</h2>
 
@@ -160,6 +158,14 @@
 <td>no</td>
 <td>tarball, sync</td>
 <td>Data path : /data/(your files)</td>
+</tr>
+<tr>
+<td>DATA_PATH_EXCLUDE</td>
+<td>null</td>
+<td>backup</td>
+<td>no</td>
+<td>tarball</td>
+<td>Exclude file from data path (comma-separated)</td>
 </tr>
 <tr>
 <td>CRON_SCHEDULE</td>
@@ -500,6 +506,16 @@ helicopterizer restore [--tarball|--sync]
 <pre><code>docker run --rm \
 ........
 -e DATA_PATH=/var/jenkins_home/ \
+-v /some/dir/jenkins-data:/var/jenkins_home \
+helicopterizer [backup|restore] [--tarball|--sync]
+</code></pre>
+
+<p>Run [Backup] with other data path &amp; exclude jenkins workspace:</p>
+
+<pre><code>docker run --rm \
+........
+-e DATA_PATH=/var/jenkins_home/ \
+-e DATA_PATH_EXCLUDE=workspace \
 -v /some/dir/jenkins-data:/var/jenkins_home \
 helicopterizer [backup|restore] [--tarball|--sync]
 </code></pre>
