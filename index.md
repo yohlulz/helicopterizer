@@ -26,14 +26,14 @@
 
 ### Usage:
 
-  ```
+```
   docker run -d [Environment Variables] [-v|--volumes-from] frekele/helicopterizer [backup|restore] [--tarball|--sync]
-  ```
+```
 
 ### Use Stable Branch for (Production)
-  ```
-  docker run -d frekele/helicopterizer:stable
-  ```
+```
+docker run -d frekele/helicopterizer:stable
+```
 
 ### Master Branch for (Development)
   ```
@@ -108,7 +108,8 @@ us-gov-west-1          | US GovCloud West (Oregon)                 |
 
 ### Usage Examples:
 
-**Run Backup with tarball:**
+Run Backup with tarball:
+
 ```
 docker run --rm \
 -e STORAGE_PROVIDER=AWS \
@@ -119,7 +120,8 @@ docker run --rm \
 helicopterizer backup --tarball
 ```
 
-**Run Backup with sync filesystem:**
+Run Backup with sync filesystem:
+
 ```
 docker run --rm \
 -e STORAGE_PROVIDER=AWS \
