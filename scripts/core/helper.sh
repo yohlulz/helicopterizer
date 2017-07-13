@@ -17,6 +17,10 @@ validationGeneralEnvs(){
         : ${AWS_DEFAULT_REGION:?"Environment variable AWS_DEFAULT_REGION is required!"}
         : ${AWS_S3_BUCKET_NAME:?"Environment variable AWS_S3_BUCKET_NAME is required!"}
         ;;
+    "LOCAL")
+       echo "Local provider (cp)"
+        : ${LOCAL_SAVE_LOCATION:?"Location to save a local copy of the backup file"}
+        ;;
     "AZURE")
         echo 'Set Cloud Storage Provider = Microsoft Azure Storage'
         echo 'Microsoft Azure Storage Not Supported.'
@@ -98,6 +102,7 @@ printEnvs(){
   echo "AWS_S3_BUCKET_NAME=$AWS_S3_BUCKET_NAME"
   echo "AWS_S3_PATH=$AWS_S3_PATH"
   echo "AWS_S3_OPTIONS=$AWS_S3_OPTIONS"
+  echo "LOCAL_SAVE_LOCATION=${LOCAL_SAVE_LOCATION}"
 }
 
 
